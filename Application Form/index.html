@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .app {
+            background-color: pink;
+            border: 3px black;
+            border-radius: 10px;
+            height: 490px;
+            width: 450px;
+            margin-left: 450px;
+            margin-top: 50px;
+            padding-top: 30px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <center>
+        <h1><b>Application Form</b></h1>
+    </center>
+
+    <div class="app">
+
+        <center>
+            <form name="form" method="post" onsubmit="return appform()" action="submit.html">
+
+                First Name &nbsp; &nbsp; &nbsp; &nbsp; : <input type="text" name="name1" pattern="[a-zA-Z ]{3, }"
+                    required>
+                <br> <br>
+
+                Last Name &nbsp; &nbsp; &nbsp; &nbsp; : <input type="text" name="name2" pattern="[a-zA-Z ]{3, }" requirerd>
+                <br> <br>
+
+                Email Id &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : <input type="text" name="email3" required>
+                <br> <br>
+
+                Mobile Number : <input type="number" name="mobile4" required>
+                <br> <br>
+
+                Date of Birth &nbsp; &nbsp; &nbsp; &nbsp; : <input type="date" name="dob" required> &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                <br> <br>
+
+                Adhar Number : <input type="number" name="adhar6" required>
+                <br> <br>
+
+                <label for="gender">Gender:</label>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label>
+                <br><br>
+
+                <label for="status">Marital Status:</label>
+                <input type="radio" id="married" name="status" value="married" required>
+                <label for="married">Married</label>
+                <input type="radio" id="single" name="status" value="single" required>
+                <label for="single">Single</label>
+                <br><br>
+
+                Address &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : <textarea type="text" name="address9"
+                    pattern="[a-zA-Z ]{3, }" required> </textarea>
+                <br> <br>
+
+                Create Password : <input type="password" name="password10" required>
+                <br> <br>
+
+                Confirm Password : <input type="password" name="cpassword11" required>
+                <br> <br>
+
+
+                <input type="submit" value="Submit"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button onclick="printData()">Print Data</button>
+
+            </form>
+
+        </center>
+
+    </div>
+
+
+
+
+    <script>
+
+        function appform() {
+
+            var fname = document.form.name1.value;
+
+            var lname = document.form.name2.value;
+
+            var email = document.form.email3.value;
+            var atposition = email.indexOf("@");
+            var dotposition = email.lastIndexOf(".");
+
+            var mobile = document.form.mobile4.value;
+
+            var curdate = new Date();
+            var udob = new Date(document.form.dob.value);
+
+            var adhar = document.form.adhar6.value;
+
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var status = document.querySelector('input[name="status"]:checked');
+
+
+            var address = document.form.address9.value;
+
+            var password = document.form.password10.value;
+
+            var cpassword = document.form.cpassword11.value;
+
+
+            // -------------------------------variables-------------------------------------------------
+
+            if (fname == "null" || fname == "") {
+                window.alert("Please enter your first name in correct format..!");
+                return false;
+            }
+
+            //first name
+
+            if (lname == "null" || lname == "") {
+                window.alert("Please enter your last name in correct format..!");
+                return false;
+            }
+
+            //last name
+
+            if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= email.length) {
+                window.alert("Please enter the valid email id..!");
+                return false;
+            }
+
+            //email
+
+            if (mobile.length < 10 || mobile.length > 10) {
+                window.alert("Please enter valid mobile number..!");
+                return false;
+            }
+
+            // mobile number
+
+
+            if (udob > curdate) {
+                window.alert("Please enter the valid date of birth..!");
+                return false;
+            }
+
+            // dob
+
+            if (adhar.length < 12 || adhar.length > 12) {
+                window.alert("Please enter valid adhar number..!");
+                return false;
+            }
+
+            // adhar
+
+            if (address == "null" || address == "") {
+                window.alert("Please enter your address in correct format..!");
+                return false;
+            }
+
+            // address
+
+            if (password.length < 6) {
+                window.alert("Password must contain atleast 6 charecters..!");
+                return false;
+            }
+
+            if (password != cpassword) {
+                window.alert("Password and confirm password is not matched..!");
+                return false;
+            }
+            // passowrd and confirm password
+            return true;
+
+        }
+
+        function printData() {
+
+            var fname = document.form.name1.value;
+
+            var lname = document.form.name2.value;
+
+            var email = document.form.email3.value;
+            var atposition = email.indexOf("@");
+            var dotposition = email.lastIndexOf(".");
+
+            var mobile = document.form.mobile4.value;
+
+            var curdate = new Date();
+            var udob = new Date(document.form.dob.value);
+
+            var adhar = document.form.adhar6.value;
+
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var status = document.querySelector('input[name="status"]:checked');
+
+
+            var address = document.form.address9.value;
+
+            var password = document.form.password10.value;
+
+            var cpassword = document.form.cpassword11.value;
+
+
+
+
+            document.write("First Name : " + fname + "<br/>");
+            document.write("Last Name : " + lname + "<br/>");
+            document.write("Email Address : " + email + "<br/>");
+            document.write("Mobile Number : " + mobile + "<br/>");
+            document.write("Date of Birth : " + udob + "<br/>");
+            document.write("Adhar Number : " + adhar + "<br/>");
+            document.write("Gender : " + gender + "<br/>");
+            document.write("Status : " + status + "<br/>");
+            document.write("Address : " + address + "<br/>");
+            document.write("Created Password : " + password + "<br/>");
+            document.write("Confirm Password : " + cpassword + "<br/>");
+            
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
