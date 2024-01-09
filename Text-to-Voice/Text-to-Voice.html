@@ -6,6 +6,9 @@
     <title>Text to Google Assistant Voice</title>
     <style>
 
+html {
+height : -webkit-fill-available;
+}
 
         body {
             font-family: 'Arial', sans-serif;
@@ -13,12 +16,43 @@
             background-color: #F0F8FF;
             color: #333;
 	    margin: 0;
+	    padding: 0;
+            box-sizing: border-box;
 	    display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh; /* Viewport height */
+            height : -webkit-fill-available;
             
         }
+
+
+	 /* Styles for screens with a maximum width of 600px */
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 100%;
+        height: auto;
+       
+      }
+    }
+
+    /* Styles for screens with a width between 601px and 1200px */
+    @media only screen and (min-width: 601px) and (max-width: 1200px) {
+      .container {
+        width: 80%;
+        height: auto;
+        
+      }
+    }
+
+    /* Styles for screens with a width greater than 1200px */
+    @media only screen and (min-width: 1201px) {
+      .container {
+        width: 60%;
+        height: auto;
+        
+      }
+    }
+
 
         h1 {
             color: #008080; 
@@ -34,7 +68,7 @@
             border: 3px solid #008080;
             border-radius: 15px;
             resize: none;
-color :#008080;
+	    color :#008080;
 }
 
 
@@ -56,9 +90,9 @@ color :#008080;
   background-color: #fff;
   cursor: pointer;
   transition: all .6s ease;
-    
-   padding: 12px 24px;
-   font-size: 16px;
+  padding: 12px 24px;
+  font-size: 16px;
+  margin-left: 180px;
 }
 
 .button svg {
@@ -156,19 +190,10 @@ button:hover {
 
 
 
-  <h1><span> Text to Google Assistant Voice Converter 
+ <h1>  Text to Google Assistant Voice Converter 
  
   
-  <div class="blobs_1"></div>
-  <div class="blobs_2"></div>
-  <div class="blobs_3"></div>
-  <div class="blobs_4"></div>
-  <div class="blobs_5"></div>
-  <div class="blobs_6"></div>
-  <div class="blobs_7"></div>
-</div>
-
- 
+ <br>
     
 
 <br>
