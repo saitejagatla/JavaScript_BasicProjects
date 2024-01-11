@@ -1,0 +1,519 @@
+<!Doc TYPE html>
+<html>
+<head>
+<title> Search Github Users </title>
+<style>
+
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;600;700;800&display=swap");
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: "Overpass", sans-serif;
+}
+
+body {
+  background-image: url('https://assets.materialup.com/uploads/2ea53b33-3ae0-4414-91ba-c0d566ca6809/preview.png');
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ /* Styles for screens with a maximum width of 600px */
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 100%;
+        height: auto;
+        background-color: lightblue;
+      }
+    }
+
+    /* Styles for screens with a width between 601px and 1200px */
+    @media only screen and (min-width: 601px) and (max-width: 1200px) {
+      .container {
+        width: 80%;
+        height: auto;
+        background-color: lightgreen;
+      }
+    }
+
+    /* Styles for screens with a width greater than 1200px */
+    @media only screen and (min-width: 1201px) {
+      .container {
+        width: 60%;
+        height: auto;
+        background-color: lightcoral;
+      }
+    }
+
+
+
+
+
+body section {
+  width: 90%;
+  margin: 0% auto;
+  max-width: 600px;
+margin-top : 90px;
+}
+
+body section header {
+  padding: 1.5rem 0.5rem;
+}
+
+body section header h1 {
+  color: #00FFFF;
+  font-size: 1.9rem;
+margin-left : 150px;
+}
+
+body section form {
+  width: 100%;
+}
+
+body section form input {
+  padding: 0.475rem 1rem;
+  border: none;
+  outline: none;
+  background: #f1f3f4;
+  width: 100%;
+  border-radius: 0.35rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+body section .searchResultCont {
+  margin-top: 2rem;
+}
+
+body section .searchResultCont .githubCont {
+  padding: 2rem;
+  background: #f1f3f4;
+  border-radius: 0.45rem;
+}
+
+body section .searchResultCont .githubCont .githubUserCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+body section .searchResultCont .githubCont .githubUserCont .userTop {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  body section .searchResultCont .githubCont .githubUserCont .userTop {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+  }
+  body
+    section
+    .searchResultCont
+    .githubCont
+    .githubUserCont
+    .userTop
+    .textCont {
+    margin-left: 0 !important;
+    margin-top: 1.5rem;
+  }
+}
+
+body section .searchResultCont .githubCont .githubUserCont .userTop .imgCont {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .userTop
+  .imgCont
+  img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .userTop
+  .imgCont::after {
+  content: "";
+  position: absolute;
+  border: 5px solid #2ba59d;
+  height: calc(100% + 5px);
+  width: calc(100% + 5px);
+  border-radius: 50%;
+  top: calc(0% - 7.5px);
+  left: calc(0% - 7.5px);
+  border-left-color: transparent;
+  transform: rotate(45deg);
+}
+
+body section .searchResultCont .githubCont .githubUserCont .userTop .textCont {
+  margin-left: 2rem;
+}
+
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .userTop
+  .textCont
+  .username
+  a {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2ba59d;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .userTop
+  .textCont
+  .username
+  a:hover {
+  text-decoration: underline;
+}
+
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .userTop
+  .textCont
+  .bio {
+  margin-top: 5px;
+  width: 100%;
+}
+
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .userTop
+  .textCont
+  .bio
+  p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #5f6368;
+  word-break: normal;
+  word-wrap: break-word;
+}
+
+body section .searchResultCont .githubCont .githubUserCont .repos_follow {
+  background-color: #dadce0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 0.4rem;
+  margin-top: 2rem;
+}
+
+body section .searchResultCont .githubCont .githubUserCont .repos_follow div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .repos_follow
+  div
+  .title {
+  color: #5f6368;
+}
+
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .repos_follow
+  div
+  p:not(.title) {
+  color: #111;
+  margin-top: 4px;
+}
+
+@media (max-width: 500px) {
+  body section .searchResultCont .githubCont .githubUserCont .repos_follow {
+    padding: 1rem;
+    margin-top: 1.5rem;
+    flex-direction: column;
+  }
+  body section .searchResultCont .githubCont .githubUserCont .repos_follow div {
+    padding: 1rem;
+    width: 80%;
+  }
+}
+body
+  section
+  .searchResultCont
+  .githubCont
+  .githubUserCont
+  .repos_follow
+  div:not(:last-child) {
+  border-bottom: 1px solid;
+  border-color: gray;
+}
+body section .searchResultCont .githubCont .githubUserCont .repoLists {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: flex-start;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+body section .searchResultCont .githubCont .githubUserCont .repoLists a {
+  text-decoration: none;
+  color: #fff;
+  background: #2ba59d;
+  padding: 0.575rem 1rem;
+  text-align: center;
+  border-radius: 0.35rem;
+}
+
+
+
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #0F172A;
+  padding: 10px 15px;
+  gap: 5px;
+  border-radius: 20px;
+}
+
+.input-container .bash-text {
+  font-size: 1rem;
+  color: white;
+}
+
+.input-container .bash-text .user {
+  color: #E879F9;
+}
+
+.input-container .bash-text .vm {
+  color: #2DD4BF;
+}
+
+.input-container .bash-text .char {
+  color: #A78BFA;
+}
+
+.input-container input[type=text].input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<section>
+  <header>
+    <h1>Search Github Users</h1>
+  </header>
+  <form autocomplete="off" id="form" class="form">
+
+
+<div class="input-container">
+  <p class="bash-text">
+    <span class="user">user</span><span class="vm">@github</span>:<span class="char">~</span>$
+  </p>
+  <input class="input" placeholder="Enter user name" id="userInput" type="text">
+</div>
+
+
+  
+  </form>
+  <div class="searchResultCont" id="searchResultCont"></div>
+</section>
+
+</body>
+
+<script>
+
+const searchResultContEl = document.getElementById("searchResultCont");
+
+const formEl = document.getElementById("form");
+
+formEl.addEventListener("submit", searchData);
+
+function searchData(e) {
+  e.preventDefault();
+  let userInput = this.querySelector("input");
+
+  userInput.addEventListener("click", () => userInput.select());
+  getData(userInput.value);
+}
+
+async function getData(userInput) {
+  const baseUrl = `https://api.github.com/users/`;
+  searchResultContEl.innerHTML = ``;
+  const fetchData = await fetch(baseUrl + userInput);
+  const res = await fetchData.json();
+  const fetchRepos = await fetch(baseUrl + userInput + `/repos?sort=created`);
+  const reposJson = await fetchRepos.json();
+  console.log(res);
+
+  if (fetchData.ok) return createUserEl(res, reposJson);
+  else ErrorData();
+}
+
+function ErrorData() {
+  const errorObj = {
+    avatar_url:
+      "https://github.com/Dinesh1042/Vanilla-JavaScript-Projects/blob/main/Search%20Github%20User/Images/404.jpg?raw=true",
+    followers: `---`,
+    following: `---`,
+    bio: `404 Error - Bio not found`,
+    login: `User Not Found`,
+    public_repos: `---`
+  };
+
+  createUserEl(errorObj, []);
+}
+
+function createUserEl(userData, reposJson) {
+  const gibhubCont = document.createElement("div");
+  gibhubCont.classList.add("githubCont");
+
+  // Github user cont
+  const githubUserCont = document.createElement("div");
+  githubUserCont.classList.add("githubUserCont");
+
+  gibhubCont.appendChild(githubUserCont);
+
+  // UserTop
+  const userTop = document.createElement("div");
+  userTop.classList.add("userTop");
+
+  const imgCont = document.createElement("div");
+  imgCont.classList.add("imgCont");
+  userTop.appendChild(imgCont);
+  const userProfile = document.createElement("img");
+  userProfile.src = userData.avatar_url; //
+  imgCont.appendChild(userProfile);
+  githubUserCont.appendChild(userTop);
+  // textCont
+  const textCont = document.createElement("div");
+  textCont.classList.add("textCont");
+  userTop.appendChild(textCont);
+  // UserName
+
+  const usernameEl = document.createElement("div");
+  usernameEl.classList.add("username");
+  const userName = document.createElement("a");
+  userName.innerHTML = userData.login; //
+  userName.href = userData.html_url; //
+  userName.target = `_blank`;
+  usernameEl.appendChild(userName);
+  textCont.appendChild(usernameEl);
+
+  // Bio
+  const bioEl = document.createElement("div");
+  bioEl.classList.add("bio");
+  const bio = document.createElement("p");
+  bio.innerHTML = userData.bio; //
+  bioEl.appendChild(bio);
+  textCont.appendChild(bioEl);
+
+  // reposFollow
+  const repos_follow = document.createElement("div");
+  repos_follow.classList.add("repos_follow");
+
+  // Repos
+
+  const reposEl = document.createElement("div");
+  reposEl.classList.add("repos");
+  const repoTitle = document.createElement("p");
+  repoTitle.innerHTML = `Repositories`; //
+  const repos = document.createElement("p");
+  repos.innerHTML = userData.public_repos; //
+
+  reposEl.appendChild(repoTitle);
+  reposEl.appendChild(repos);
+  repos_follow.appendChild(reposEl);
+
+  // Following
+  const followingEl = document.createElement("div");
+  followingEl.classList.add("following");
+  const followingTitle = document.createElement("p");
+  followingTitle.innerHTML = `Following`; //
+  const following = document.createElement("p");
+  following.innerHTML = userData.following; //
+
+  followingEl.appendChild(followingTitle);
+  followingEl.appendChild(following);
+  repos_follow.appendChild(followingEl);
+
+  // Followers
+
+  const followerEl = document.createElement("div");
+  followerEl.classList.add("followers");
+  const followersTitle = document.createElement("p");
+  followersTitle.innerHTML = `Followers`; //
+  const followers = document.createElement("p");
+  followers.innerHTML = userData.followers; //
+
+  followerEl.appendChild(followersTitle);
+  followerEl.appendChild(followers);
+  repos_follow.appendChild(followerEl);
+
+  githubUserCont.appendChild(repos_follow);
+  searchResultContEl.appendChild(gibhubCont);
+
+  const repoList = document.createElement("div");
+  repoList.classList.add("repoLists");
+  githubUserCont.appendChild(repoList);
+  if (reposJson.length) {
+    const Repositories = reposJson.slice(0, 5);
+    Repositories.forEach((repo) => {
+      const projectLinkEl = document.createElement("a");
+      projectLinkEl.innerHTML = repo.name;
+      projectLinkEl.href = repo.html_url;
+      projectLinkEl.target = `_blank`;
+      repoList.appendChild(projectLinkEl);
+    });
+  }
+}
+
+</script>
+</html>
